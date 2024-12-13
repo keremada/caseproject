@@ -4,6 +4,7 @@ import SearchBar from '../components/SearchBar';
 import Pagination from '../components/Pagination';
 import { Movie } from '../types/movie';
 import { API_KEY, API_URL } from '../types/api';
+import styles from '../styles/homePage.module.scss'; 
 
 const HomePage: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -88,17 +89,17 @@ const HomePage: React.FC = () => {
   const totalPages = Math.ceil(totalResults / 10);
 
   return (
-    <div>
-      <h1>Movie List</h1>
+    <div className={styles.homePage}>
+      <h1 className={styles.title}>Movie List</h1>
       <SearchBar
         onSearch={setSearchQuery}
         onFilterType={setType}
         onFilterYear={setYear}
         onFilterSeason={setSeason}
         onFilterEpisode={setEpisode}
-        onResetPage={() => setCurrentPage(1)} 
+        onResetPage={() => setCurrentPage(1)}
       />
-      <MovieTable movies={movies} season={season} type={type} episode={episode}/>
+      <MovieTable movies={movies} season={season} type={type} episode={episode} />
       {totalPages > 1 && (
         <Pagination
           currentPage={currentPage}

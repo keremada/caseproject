@@ -1,15 +1,19 @@
 .details-page {
+    background: linear-gradient(to bottom, #1a1a2e, #16213e);
+    color: #fff;
     padding: 20px;
-    max-width: 900px;
-    margin: 0 auto; /* Center the page horizontally */
-  
+    margin: 0 auto; 
+    border-radius: 8px;
+    width: 100%;
+    min-height: 1000px;
+    max-height: 1400px;
     h1 {
       font-size: 2.5rem;
       margin-bottom: 20px;
-      color: #2c3e50;
+      color: #00d4ff;
       text-align: center;
       font-weight: bold;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
   
     .poster {
@@ -22,20 +26,21 @@
       transition: transform 0.3s ease;
   
       &:hover {
-        transform: scale(1.05); /* Slight zoom effect on hover */
+        transform: scale(1.05);
       }
     }
   
     .details {
       font-size: 1rem;
       line-height: 1.8;
-      color: #4a4a4a;
-      background-color: #f9f9f9;
+      color: #f1f1f1; 
+      background-color: rgba(255, 255, 255, 0.1); 
       padding: 20px;
+      max-width: 900px;
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       margin-top: 20px;
-  
+      margin: 0 auto;
       p {
         margin: 12px 0;
   
@@ -47,37 +52,6 @@
         &:first-of-type {
           margin-top: 0;
         }
-      }
-    }
-  
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-  
-      .poster {
-        max-width: 250px;
-      }
-  
-      .details {
-        padding: 15px;
-        font-size: 0.9rem;
-      }
-    }
-  
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.8rem;
-      }
-  
-      .poster {
-        max-width: 200px;
-      }
-  
-      .details {
-        padding: 10px;
-        font-size: 0.85rem;
       }
     }
   }
