@@ -81,6 +81,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
             onChange={(e) => setEpisode(e.target.value)}
             placeholder="Episode (e.g., 1)"
             className={styles.input}
+            disabled={!season.trim()}
           />
         </>
       )}
