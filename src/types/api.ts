@@ -1,2 +1,2 @@
-export const API_KEY = '70a8843';
-export const API_URL = 'http://www.omdbapi.com/';
+export const API_KEY = process.env.REACT_APP_API_KEY || '';
+export const API_URL = process.env.REACT_APP_API_URL || '';
