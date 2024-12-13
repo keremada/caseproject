@@ -72,4 +72,7 @@ I used year like this because in the year search mode, it won't return correctly
     return poster !== 'N/A' ?  poster : `http://img.omdbapi.com/?apikey=${API_KEY}&i=${imdbID}`;
   };
 I used image return like this because in some links of the provided api for poster does not have the images and it returns nothing. 
-
+## .env.local
+**My env local file is like this, the api key and api url is given below.**
+REACT_APP_API_KEY=70a8843
+REACT_APP_API_URL=http://www.omdbapi.com/
