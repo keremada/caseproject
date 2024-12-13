@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/pagination.scss';
+import styles from '../styles/pagination.module.scss';
 
 interface PaginationProps {
   currentPage: number;
@@ -11,11 +11,11 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPage
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className="pagination">
+    <div className={styles.pagination}>
       {pages.map((page) => (
         <button
           key={page}
-          className={`pagination-button ${page === currentPage ? 'active' : ''}`}
+          className={`${styles.paginationButton} ${page === currentPage ? styles.active : ''}`}
           disabled={page === currentPage}
           onClick={() => onPageChange(page)}
         >

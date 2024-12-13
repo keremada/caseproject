@@ -1,28 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
-interface MovieDetails {
-  Title: string;
-  Year: string;
-  Released: string;
-  Runtime: string;
-  Genre: string;
-  Director: string;
-  Actors: string;
-  Plot: string;
-  Poster: string;
-  imdbRating: string;
-  Language: string;
-  Country: string;
-  Awards: string;
-  BoxOffice: string;
-}
-
-const API_URL = 'http://www.omdbapi.com/';
-const API_KEY = '70a8843';
+import styles from '../styles/detailsPage.module.scss';
+import { API_KEY,API_URL } from '../types/api';
+import { MovieDetails } from '../types/movie';
 
 const DetailsPage: React.FC = () => {
-  const { imdbID } = useParams<{ imdbID: string }>(); // Extract imdbID from the URL
+  const { imdbID } = useParams<{ imdbID: string }>();
   const [movie, setMovie] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -33,7 +16,7 @@ const DetailsPage: React.FC = () => {
         const data = await response.json();
 
         if (data.Response === 'True') {
-          setMovie(data); // Set movie data only if response is valid
+          setMovie(data);
         } else {
           console.error('Invalid response:', data);
         }
@@ -56,23 +39,28 @@ const DetailsPage: React.FC = () => {
   if (!movie) {
     return <p>No movie details available.</p>;
   }
-  console.log(movie)
+
+  console.log(movie);
+
   return (
-    <div style={{ padding: '20px' }}>
+    <div className={styles['details-page']}>
       <h1>{movie.Title}</h1>
-      <img src={movie.Poster} alt={movie.Title} style={{ width: '300px', marginBottom: '20px' }} />
-      <p><strong>Year:</strong> {movie.Year}</p>
-      <p><strong>Released:</strong> {movie.Released}</p>
-      <p><strong>Runtime:</strong> {movie.Runtime}</p>
-      <p><strong>Genre:</strong> {movie.Genre}</p>
-      <p><strong>Director:</strong> {movie.Director}</p>
-      <p><strong>Actors:</strong> {movie.Actors}</p>
-      <p><strong>Plot:</strong> {movie.Plot}</p>
-      <p><strong>Language:</strong> {movie.Language}</p>
-      <p><strong>Country:</strong> {movie.Country}</p>
-      <p><strong>Awards:</strong> {movie.Awards}</p>
-      <p><strong>IMDb Rating:</strong> {movie.imdbRating}</p>
-      <p><strong>Box Office:</strong> {movie.BoxOffice}</p>
+      {movie.Poster !== 'N/A' && <img src={movie.Poster} alt={movie.Title} className={styles.poster} />}
+      <div className={styles.details}>
+        {movie.Year !== 'N/A' && <p><strong>Year:</strong> {movie.Year}</p>}
+        {movie.Released !== 'N/A' && <p><strong>Released:</strong> {movie.Released}</p>}
+        {movie.Runtime !== 'N/A' && <p><strong>Runtime:</strong> {movie.Runtime}</p>}
+        {movie.Genre !== 'N/A' && <p><strong>Genre:</strong> {movie.Genre}</p>}
+        {movie.Director !== 'N/A' && <p><strong>Director:</strong> {movie.Director}</p>}
+        {movie.Actors !== 'N/A' && <p><strong>Actors:</strong> {movie.Actors}</p>}
+        {movie.Plot !== 'N/A' && <p><strong>Plot:</strong> {movie.Plot}</p>}
+        {movie.Language !== 'N/A' && <p><strong>Language:</strong> {movie.Language}</p>}
+        {movie.Country !== 'N/A' && <p><strong>Country:</strong> {movie.Country}</p>}
+        {movie.Awards !== 'N/A' && <p><strong>Awards:</strong> {movie.Awards}</p>}
+        {movie.imdbRating !== 'N/A' && <p><strong>IMDb Rating:</strong> {movie.imdbRating}</p>}
+        {movie.BoxOffice && movie.BoxOffice !== 'N/A' && <p><strong>Box Office:</strong> {movie.BoxOffice}</p>}
+        {movie.totalSeasons && movie.totalSeasons !== 'N/A' && <p><strong>Total Seasons:</strong> {movie.totalSeasons}</p>}
+      </div>
     </div>
   );
 };

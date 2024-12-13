@@ -44,3 +44,32 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+# Movie Search Application
+
+This project is a React application to search for movies, TV series, and episodes using the OMDb API by Kerem Mert Ada.
+
+## Features
+- Search movies by name, year, or type (movie, series, episode).
+- Pagination to display 10 movies per page.
+- Detailed movie view with title, poster, genre, and more, if the data are empty, the data type will return nothing.
+
+## Technologies Used
+- React with TypeScript
+- SASS, CSS Modules for styling
+
+## Key Points 
+     <input
+        type="text"
+        value={year}
+        onChange={(e) => setYear(e.target.value)}
+        placeholder="Year (e.g., 2020)"
+      />
+I used year like this because in the year search mode, it won't return correctly, i saw this issue. https://github.com/omdbapi/OMDb-API/issues/307
+
+  const getPosterUrl = (imdbID: string, poster: string) => {
+    return poster !== 'N/A' ?  poster : `http://img.omdbapi.com/?apikey=${API_KEY}&i=${imdbID}`;
+  };
+I used image return like this because in some links of the provided api for poster does not have the images and it returns nothing. 
+
