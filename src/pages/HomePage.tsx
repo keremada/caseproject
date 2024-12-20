@@ -16,7 +16,9 @@ const HomePage: React.FC = () => {
   const [episode, setEpisode] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalResults, setTotalResults] = useState<number>(0);
-
+  console.log('API_KEY:', process.env.REACT_APP_API_KEY);
+  console.log('API_URL:', process.env.REACT_APP_API_URL);
+  
   useEffect(() => {
     const fetchMovies = async () => {
       try {
